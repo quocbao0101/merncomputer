@@ -1,0 +1,19 @@
+/* a {
+  background: linear-gradient(0deg, slateblue, slateblue) no-repeat right bottom / 0 var(--bg-h);
+  transition: background-size 300ms;
+  --bg-h: 100%;
+}
+a:where(:hover, :focus-visible) {
+  background-size: 100% var(--bg-h);
+  background-position-x: left;
+}
+
+.underline {
+  padding-bottom: 8px;
+  --bg-h: 2px;
+  text-decoration: none;
+  line-height: 1;
+} */
+.textBox {
+  width: 60%;
+}

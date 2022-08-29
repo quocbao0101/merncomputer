@@ -1,0 +1,12 @@
+.background {
+    background-color: #eef1f2;
+    color: #777777;
+}
+.cards {
+    width: 100%;
+}
+.image:hover {
+    -webkit-transform: scale(1.01);
+    -ms-transform: scale(1.01);
+    transform: scale(1.01);
+}
