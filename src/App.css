@@ -1,3 +1,14 @@
 body {
   font-family: 'Quicksand', sans-serif;
 }
+.scroll {
+  left: 40px !important;
+  border-radius: 100% !important;
+  background: #111 !important;
+  color: #fff !important;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 40%) !important;
+  border-color: #111 !important;
+}
+.scroll:hover {
+  box-shadow: 0 5px 4px rgb(0 0 0 / 40%) !important;
+}

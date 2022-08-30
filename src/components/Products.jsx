@@ -28,7 +28,7 @@ function Products({ data, category }) {
             <div className='flex items-center'>
               {product.discount &&
                (<span className='py-3 px-2 text-white font-bold bg-red-600 rounded-full mr-2 text-xs'>
-                {product.discount} %
+                - {product.discount} %
                 </span>)
               }
               {product.noti && (

@@ -38,3 +38,27 @@ export const saleData = [{
         url: 'https://nguyenvu.store/wp-content/uploads/2022/08/LOGITECH-PROMO.webp',
     },
 ]
+
+export const bannerData1 = [{
+        url: 'https://nguyenvu.store/wp-content/uploads/2022/08/e-dra-promotion-1.webp',
+    },
+    {
+        url: 'https://nguyenvu.store/wp-content/uploads/2022/08/e-dra-promotion-3.webp'
+    },
+    {
+        url: 'https://nguyenvu.store/wp-content/uploads/2022/08/e-dra-promotion-2.webp',
+    },
+    {
+        url: 'https://nguyenvu.store/wp-content/uploads/2022/08/e-dra-promotion.webp',
+    },
+]
+export const bannerData2 = [{
+    url: 'https://nguyenvu.store/wp-content/uploads/2022/08/Gear-Asus.webp',
+},
+{
+    url: 'https://nguyenvu.store/wp-content/uploads/2022/08/Chuong-trinh-Khuyen-mai-danh-cho-Khach-hang-than-thiet.jpg'
+},
+{
+    url: 'https://nguyenvu.store/wp-content/uploads/2022/08/asus-promo.webp',
+},
+]

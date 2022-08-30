@@ -17,3 +17,11 @@ a:where(:hover, :focus-visible) {
 .textBox {
   width: 60%;
 }
+
+.footer {
+  background-color: rgb(34, 34, 34);
+}
+
+.facebook:hover {
+  background: '#4267B2';
+}
