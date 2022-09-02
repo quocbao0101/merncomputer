@@ -19,7 +19,7 @@ function Products({ data, category }) {
           </span>
         </div>
       </div>
-      <div className='grid grid-cols-4 gap-4 mt-5'>
+      <div className='grid lg:grid-cols-4 md:grid-cols-2 grid-cols-2 gap-4 mt-5'>
         {data.map((product, index) => {
         const salePrice = product.price - (product.price * product.discount / 100);
         return (

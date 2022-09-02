@@ -25,3 +25,17 @@ a:where(:hover, :focus-visible) {
 .facebook:hover {
   background: '#4267B2';
 }
+
+.vl {
+  border-left: 1px solid rgb(181, 184, 181);
+  height: 50%;
+  align-items: center;
+  display: flex;
+  align-self: center;
+  justify-items: center;
+}
+
+.searchBox {
+  box-shadow: none;
+  border: 1px solid #fff;
+}
