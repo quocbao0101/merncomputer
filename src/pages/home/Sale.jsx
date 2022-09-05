@@ -7,18 +7,22 @@ function Sale() {
     <div>
         <div className='flex justify-center py-10'>
             <div className='flex items-center flex-col'>
-                <span className='font-black text-4xl uppercase mb-3'>Sản phẩm giá tốt - Chốt liền tay</span>
-                <div>
-                    <span>Đừng vội mua nếu chưa xem giá tại</span>
+                <span className='font-black lg:text-4xl md:text-2xl text-lg 
+                lg:uppercase md:normal-case normal-case mb-3'>Sản phẩm giá tốt - chốt liền tay</span>
+                <div className='flex lg:flex-row md:flex-row flex-col items-center'>
+                    <span className='lg:text-xl md:text-sm text-xs font-semibold text-gray-500'>Đừng vội mua nếu chưa xem giá tại</span>
                     <a href='/'>
-                        <span className='ml-1 bg-gradient-to-r from-red-500 to-orange-400 p-2 text-white rounded-lg'>
+                        <span className='lg:ml-1 md:ml-1 
+                        lg:p-2 md:p-2 p-1
+                        lg:text-xl md:text-sm text-xs
+                        bg-gradient-to-r from-red-500 to-orange-400 font-semibold text-white rounded-lg'>
                             Nguyễn Vũ Store
                         </span>
                     </a>
                 </div>
             </div>
         </div>
-        <div className='grid grid-cols-3 gap-2'>
+        <div className='grid lg:grid-cols-3 gap-2 md:grid-cols-3 grid-cols-1'>
             <div>
                 <img src='https://nguyenvu.store/wp-content/uploads/2022/07/Mi-TV-4K-A2-58.jpg' alt='12345' />
             </div>
