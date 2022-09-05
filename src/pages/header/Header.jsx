@@ -110,7 +110,7 @@ function Header() {
       {/* Computer */}
       <div className='container mx-auto lg:block md:hidden hidden'>
           <div className='mb-2 hidden md:block lg:block'>
-              <img src={banner} alt='' />
+              <img src='https://nguyenvu.store/wp-content/uploads/2022/08/topbaner-9-9-1536x75.png' alt='' />
           </div>
           <div className='flex flex-row items-center justify-between'> 
               <div className='mt-5 '>

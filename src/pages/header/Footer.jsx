@@ -3,18 +3,14 @@ import './style.css';
 
 
 function Footer() {
-    const buttonStyle = {
-        background: 'none',
-        color: 'black',
-      };
   return (
     <div className='footer text-white'>
         <div className='container mx-auto pt-10 pb-32'>
-            <div className='grid grid-cols-4 gap-10'>
+            <div className='grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 gap-10'>
                 <div className='flex flex-col justify-center items-center'>
                     <img className='h-24 w-24' src='https://nguyenvu.store/media/LOGO-NVU.svg' alt='12345' />
-                    <span className='uppercase font-bold text-xl'>Nguyễn Vũ Store</span>
-                    <span className='font-semibold text-md'>"Gaming Gear"</span>
+                    <span className='uppercase font-bold lg:text-xl md:text-sm text-xl '>Nguyễn Vũ Store</span>
+                    <span className='font-semibold lg:text-lg md:text-xs text-lg'>"Gaming Gear"</span>
                     {/* <div className='flex flex-row mt-1'>
                         <button  style={{ ...buttonStyle }} className='facebook'>
                             <svg className='h-8 w-8 hover:fill-sky-700' fill="#fff" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 50 50">
@@ -26,7 +22,7 @@ function Footer() {
                 <div className=''>
                     <span className='font-bold text-xl uppercase'>Về chúng tôi</span>
                     <hr className='solid border border-red-500 w-1/6'></hr>
-                    <div className='mt-10 text-sm font-semibold'>
+                    <div className='mt-5 text-sm font-semibold'>
                         <span>Giờ làm việc: </span>
                         <span className='text-yellow-400'> 08:00 - 21:00</span>
                     </div>

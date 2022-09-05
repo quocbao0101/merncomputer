@@ -6,7 +6,7 @@ import { products } from './product';
 import Slider from '../../components/Slider';
 import Products from '../../components/Products';
 import Sale from './Sale';
-import SlideProduct from '../../components/Swiper';
+import SlideProduct from '../../components/SlideProduct';
 import Card from '../../components/Card';
 import { card } from './card';
 import SliderFade from '../../components/SliderFade';
@@ -17,12 +17,38 @@ function Home() {
   return (
     <div>
         {/* Mobile */}
-        <div className='lg:hidden md:block block w-full h-full'>
+        <div className='background lg:hidden md:block block w-full h-full pb-10'>
           <div className='container mx-auto w-full h-full'>
-            <div className='container'>
-              <SliderFade data={fadeImages} />
-              <Sale />
-              <Products category='Khuyến mãi hot' data={pros} />
+              <div className='container'>
+                <SliderFade data={fadeImages} />
+                <Sale />
+                <Products category='Khuyến mãi hot' data={pros} />
+                <Slider data={saleData} />
+                <SlideProduct space={4} slides={2} category='Màn hình giá shock' data={products} />
+                <div className='grid grid-cols-2 h-full'>
+                      <div className='h-full'> 
+                          <Slider data={bannerData1} />
+                      </div>
+                      <div className='h-full'>
+                          <Slider data={bannerData2} />
+                      </div>
+                </div>
+                <div className='mt-10'>
+                      <img src='https://nguyenvu.store/wp-content/uploads/2022/05/Banner-5000-G-Series-fix.jpg' alt='123456' />
+                </div>
+                <SlideProduct space={4} slides={2} category='Cấu hình tham khảo' data={products} />
+                <div className='reason flex justify-center'>
+                    <div className=''>
+                      <span className='text-sm font-bold text-black mr-2'>Vì sao chọn Nguyễn Vũ Store ?</span>
+                      <span className='text-xs font-bold text-white bg-red-500
+                      p-2 rounded-3xl'>Hotline: 1900.000.000</span>
+                    </div>
+                </div>
+                <div className='grid grid-cols-2 lg:gap-0 md:gap-2 gap-0 mt-5'>
+                    {card.map((dt, index) => (
+                      <Card key={[index]} name={dt.name} img={dt.img} url={dt.link} />
+                    ))}
+                </div>
             </div>
           </div>
         </div>
@@ -67,7 +93,7 @@ function Home() {
                 <Sale />
                 <Products category='Khuyến mãi hot' data={pros} />
                 <Slider data={saleData} />
-                <SlideProduct category='Màn hình giá shock' data={products} />
+                <SlideProduct space={15} slides={4} category='Màn hình giá shock' data={products} />
                 <div className='grid grid-cols-2 gap-4 h-full'>
                     <div className='h-full'> 
                         <Slider data={bannerData1} />
@@ -80,7 +106,7 @@ function Home() {
                 <div className='mt-10'>
                     <img src='https://nguyenvu.store/wp-content/uploads/2022/05/Banner-5000-G-Series-fix.jpg' alt='123456' />
                 </div>
-                <SlideProduct category='Cấu hình tham khảo' data={products} />
+                <SlideProduct space={15} slides={4} category='Cấu hình tham khảo' data={products} />
                 <div className='reason flex justify-center'>
                     <div className=''>
                       <span className='text-3xl font-bold text-black mr-2'>Vì sao chọn Nguyễn Vũ Store ?</span>
