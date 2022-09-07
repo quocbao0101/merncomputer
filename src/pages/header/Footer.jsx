@@ -6,7 +6,7 @@ function Footer() {
   return (
     <div className='footer text-white'>
         <div className='container mx-auto pt-10 pb-32'>
-            <div className='grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 gap-10'>
+            <div className='grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 lg:p-0 md:p-0 px-10 gap-10'>
                 <div className='flex flex-col justify-center items-center'>
                     <img className='h-24 w-24' src='https://nguyenvu.store/media/LOGO-NVU.svg' alt='12345' />
                     <span className='uppercase font-bold lg:text-xl md:text-sm text-xl '>Nguyễn Vũ Store</span>

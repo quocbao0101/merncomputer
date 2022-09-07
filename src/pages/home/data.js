@@ -6,6 +6,45 @@ export const data = [
     },
     {
         name: 'LAPTOP, MACBOOK, IMAC',
+    },
+    {
+        name: 'PC THEO HÃNG'
+    },
+    {
+        name: 'LINH KIỆN MÁY TÍNH',
+    },
+    {
+        name: 'MÀN HÌNH MÁY TÍNH',
+    },
+    {
+        name: 'BÀN, GHẾ GAMING',
+    },
+    {
+        name: 'BÀN PHÍM',
+    },
+    {
+        name: 'CHUỘT, LÓT CHUỘT',
+    },
+    {
+        name: 'TAI NGHE, LOA, MICRO',
+    },
+    {
+        name: 'THIẾT BỊ CHƠI GAME',
+    },
+    {
+        name: 'PHỤ KIỆN CHÍNH HÃNG',
+    },
+    {
+        name: 'THIẾT BỊ MẠNG',
+    },
+    {
+        name: 'PHẦN MỀM, THIẾT BỊ VĂN PHÒNG'
+    },
+    {
+        name: 'ĐIỆN THOẠI, TABLET, ĐỒNG HỒ',
+    },
+    {
+        name: 'THIẾT BỊ THÔNG MINH'
     }
 ];
 

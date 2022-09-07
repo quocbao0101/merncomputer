@@ -3,13 +3,20 @@ import Header from "./pages/header/Header";
 import './App.css';
 import ScrollToTop from "react-scroll-to-top";
 import Footer from "./pages/header/Footer";
+import { Routes, Route } from 'react-router-dom';
+import Category from "./pages/category/Category";
+import MuiSpeedDial from "./components/MuiSpeedDial";
 
 
 function App() {
   return (
+  <>
     <div className="flex flex-col">
       <Header />
-      <Home />
+      <Routes>
+        <Route path="/" index element={<Home />}></Route>
+        <Route path="/product" element={<Category />}></Route>
+      </Routes>
       <Footer />
       <ScrollToTop 
         top={1000}
@@ -20,7 +27,10 @@ function App() {
           </svg>
         </div>}
         smooth />
+
     </div>
+    <MuiSpeedDial />
+  </>
   );
 }
 

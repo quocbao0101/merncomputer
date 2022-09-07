@@ -1,0 +1,42 @@
+.vl-product {
+    border-left: 1px solid rgb(181, 184, 181);
+    height: 50%;
+    align-items: center;
+    display: flex;
+    align-self: center;
+    justify-items: center;
+}
+.discount {
+    position: absolute;
+    top: 5%;
+    left: 2%;
+}
+.notification {
+    position: absolute;
+    top: 5%;
+    left: 15%;
+}
+
+.sort:focus {
+    box-shadow: 0 0 6pt 2pt rgb(59 130 246 / 0.5);   
+}
+.search:focus {
+    box-shadow: 0 0 6pt 2pt rgb(59 130 246 / 0.5);
+}
+
+.MuiSlider-thumb{
+    color: #f7434c !important;
+}
+.MuiSlider-rail{
+    color:#f87171 !important;
+}
+.MuiSlider-track{
+    color: #f7434c !important;
+}
+
+.reset {
+    background: #2f2f2f;
+}
+.reset:hover {
+    background: #000;
+}

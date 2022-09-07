@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './style.css';
-import banner from '../../assets/png/topbaner-PC-6-2048x100.png';
+import { Link } from 'react-router-dom';
 import logo from '../../assets/png/logo-ngang.svg';
 
 function Header() {
@@ -114,35 +114,53 @@ function Header() {
           </div>
           <div className='flex flex-row items-center justify-between'> 
               <div className='mt-5 '>
-                <img className='h-30 w-40' src={logo} alt='' />
+                <Link to='/'>
+                  <img className='h-30 w-40' src={logo} alt='' />
+                </Link>
               </div>
               <div className='flex-grow'>
-                <input className='bg-gray-200 ml-5 py-3 px-4 h-9 textBox rounded-2xl text-sm' placeholder='Nhập tên sảm phẩm cần tìm' type='text' />
+                <input className='bg-gray-200 ml-5 py-5 px-4 h-9 textBox rounded-3xl text-sm' placeholder='Nhập tên sảm phẩm cần tìm' type='text' />
               </div>
-              <div className='bg-sky-200  px-10 py-5 rounded-lg lg:block md:block hidden'>
-                <a href='/login' className='transition ease-in-out delay-100 text-sm hover:text-red-600 font-bold'>ĐĂNG NHẬP / ĐĂNG KÝ</a>
+              <div className='px-10 py-5 rounded-lg lg:block md:block hidden'>
+                <Link to='/login' className='transition ease-in-out delay-100 text-sm hover:text-red-600 font-bold'>ĐĂNG NHẬP / ĐĂNG KÝ</Link>
               </div>
           </div>
-          <div className='flex flex-row mt-4 justify-between bg-sky-200  px-10 py-5 rounded-lg'>
+          <div className='flex flex-row mt-4 justify-between px-10 py-5 rounded-lg'>
             <div className='flex items-center'>
-                <div className='mr-5'>
-                  <a href='/' className='capitalize transition ease-in-out delay-100 text-sm hover:text-red-600 font-bold'>Danh mục sản phẩm</a>
+                <div className='mr-5 flex items-center'>
+                  <Link to='/' className='mr-1 uppercase transition ease-in-out delay-100 text-sm hover:text-red-600 font-bold'>Danh mục sản phẩm</Link>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-3 h-3 text-red-600">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                  </svg>
                 </div>
-                <div className='mr-5'>
-                  <a href='/' className='capitalize transition ease-in-out delay-100 text-sm hover:text-red-600 font-bold'>Xây dựng cấu hình</a>
+                <div className='mr-5 flex flex-row items-center'>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 mr-1">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" />
+                  </svg>
+                  <Link to='/' className='uppercase transition ease-in-out delay-100 text-sm hover:text-red-600 font-bold'>Xây dựng cấu hình</Link>
                 </div>
-                <div className='mr-5'>
-                  <a href='/' className='capitalize transition ease-in-out delay-100 text-sm hover:text-red-600 font-bold'>Khuyến mãi</a>
+                <div className='mr-5 flex flex-row items-center'>
+                  <svg className="mr-1 h-7 w-7 text-black" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">  
+                    <path stroke="none" d="M0 0h24v24H0z"/>  
+                    <line x1="9" y1="15" x2="15" y2="9" />  
+                    <circle cx="9.5" cy="9.5" r=".5" fill="currentColor" />  
+                    <circle cx="14.5" cy="14.5" r=".5" fill="currentColor" />  
+                    <path d="M5 7.2a2.2 2.2 0 0 1 2.2 -2.2h1a2.2 2.2 0 0 0 1.55 -.64l.7 -.7a2.2 2.2 0 0 1 3.12 0l.7 .7a2.2 2.2 0 0 0 1.55 .64h1a2.2 2.2 0 0 1 2.2 2.2v1a2.2 2.2 0 0 0 .64 1.55l.7 .7a2.2 2.2 0 0 1 0 3.12l-.7 .7a2.2 2.2 0 0 0 -.64 1.55 v1a2.2 2.2 0 0 1 -2.2 2.2h-1a2.2 2.2 0 0 0 -1.55 .64l-.7 .7a2.2 2.2 0 0 1 -3.12 0l-.7 -.7a2.2 2.2 0 0 0 -1.55 -.64h-1a2.2 2.2 0 0 1 -2.2 -2.2v-1a2.2 2.2 0 0 0 -.64 -1.55l-.7 -.7a2.2 2.2 0 0 1 0 -3.12l.7 -.7a2.2 2.2 0 0 0 .64 -1.55 v-1" />
+                  </svg>
+                  <Link to='/' className='uppercase transition ease-in-out delay-100 text-sm hover:text-red-600 font-bold'>Khuyến mãi</Link>
                 </div>
-                <div>
-                  <a href='/' className='capitalize transition ease-in-out delay-100 text-sm hover:text-red-600 font-bold'>Thông tin công nghệ</a>
+                <div className='flex flex-row items-center'>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 mr-1">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" />
+                  </svg>
+                  <Link to='/' className='uppercase transition ease-in-out delay-100 text-sm hover:text-red-600 font-bold'>Thông tin công nghệ</Link>
                 </div>
             </div>
             <div className='flex flex-row justify-between items-center'>
-                <a href='/' className='capitalize transition ease-in-out delay-100 text-sm hover:text-red-600 font-bold'>Hướng dẫn thanh toán</a>
+                <Link to='/' className='uppercase transition ease-in-out delay-100 text-sm hover:text-red-600 font-bold'>Hướng dẫn thanh toán</Link>
             </div>
             <div className='flex flex-row justify-between items-center'>
-                <a href='/' className='capitalize transition ease-in-out delay-100 text-sm hover:text-red-600 font-bold'>Sản phẩm yêu thích</a>
+                <Link to='/' className='uppercase transition ease-in-out delay-100 text-sm hover:text-red-600 font-bold'>Sản phẩm yêu thích</Link>
             </div>
           </div>
       </div>
