@@ -2,8 +2,9 @@ import React, { useEffect } from 'react';
 import { Slider } from '@mui/material';
 import indexStyle from './style';
 import CurrencyFormat from 'react-currency-format';
+import CircularProgress from '@mui/material/CircularProgress';
 
-function Tool() {
+function Tool({ loading }) {
     const [value, setValue] = React.useState([20, 10000]);
     const [price, setPrice] = React.useState([]);
     useEffect(() => {
@@ -16,14 +17,15 @@ function Tool() {
         setValue(newValue);
     };
   return (
-    <div className='w-full h-1/3 bg-white rounded-sm p-5 lg:block md:hidden hidden'>
+    <div className='w-full h-full bg-white rounded-sm p-5 lg:block md:hidden hidden'>
         <div className='py-3 relative'>
             <input type='text' className='w-full pr-8 pl-3 py-2 border-2 border-slate-300 rounded-md text-black outline-none search' placeholder='Nhập từ khóa cần tìm...' />
             <span className='absolute inset-y-6 right-2 pl-2 flex items-end'>
                 <button>
+                {loading ? <CircularProgress  /> : 
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="h-6 w-6 text-slate-500">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-                </svg>
+                </svg> }
                 </button>
             </span>
         </div>
