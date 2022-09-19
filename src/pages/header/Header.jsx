@@ -3,21 +3,31 @@ import './style.css';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/png/logo-ngang.svg';
 import { USER_LOCAL_STORE } from '../../constants';
-import { withStyles } from '@mui/styles';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import ListItemText from '@mui/material/ListItemText';
+import authService from '../../services/auth';
+import { useNavigate } from "react-router-dom";
+
 
 function Header() {
   const user = JSON.parse(localStorage.getItem(USER_LOCAL_STORE));
   const [anchorEl, setAnchorEl] = useState(null);
+  const navigate = useNavigate();
+  const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
+
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const logOut = () => {
+    authService.logout();
+    navigate('/dang-nhap');
+  }
+
   return (
     <div>
       {/* Mobile */}
@@ -133,11 +143,30 @@ function Header() {
                 </Link>
               </div>
               <div className='flex-grow'>
-                <input className='bg-gray-200 ml-5 py-5 px-4 h-9 textBox rounded-3xl text-sm' placeholder='Nhập tên sảm phẩm cần tìm' type='text' />
+                <input className='bg-gray-200 ml-5 py-5 px-4 h-9 border-2 border-slate-300
+                outline-none search
+                textBox rounded-3xl text-sm' placeholder='Nhập tên sảm phẩm cần tìm' type='text' />
               </div>
               <div className='px-10 py-5 rounded-lg lg:block md:block hidden'>
                 {user ?
-                  <span className='font-bold' onClick={handleClick}>{user.name}</span>
+                  <div>
+                      <span
+                        onClick={handleClick}
+                        className='capitalize cursor-pointer
+                        transition ease-in-out delay-100
+                       hover:text-red-600 font-bold'
+                      >
+                        {user.name}
+                      </span>
+                      <Menu
+                        anchorEl={anchorEl}
+                        open={open}
+                        onClose={handleClose}
+                      >
+                        <MenuItem onClick={handleClose}>Profile</MenuItem>
+                        <MenuItem onClick={logOut}>Đăng xuất</MenuItem>
+                      </Menu>
+                    </div>
                   :
                   <Link to='/dang-nhap' className='transition ease-in-out delay-100 text-sm hover:text-red-600 font-bold'>ĐĂNG NHẬP / ĐĂNG KÝ</Link>
                 }

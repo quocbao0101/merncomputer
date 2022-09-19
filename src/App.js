@@ -8,6 +8,7 @@ import Category from "./pages/category/Category";
 import MuiSpeedDial from "./components/MuiSpeedDial";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
+import Forgot from "./pages/forgot-password/Forgot";
 
 
 
@@ -21,6 +22,7 @@ function App() {
         <Route path="/danh-muc/linh-kien" element={<Category />}></Route>
         <Route path="/dang-nhap" element={<Login />}></Route>
         <Route path="/dang-ky" element={<Register />}></Route>
+        <Route path="/forgot-password" element={<Forgot />}></Route>
       </Routes>
       <Footer />
       <ScrollToTop 

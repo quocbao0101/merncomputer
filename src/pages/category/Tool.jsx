@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Slider } from '@mui/material';
 
-import indexStyle from './style';
 import CurrencyFormat from 'react-currency-format';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useSelector} from 'react-redux';
@@ -39,7 +38,8 @@ function Tool({ loading, handleChangeSearch,
     const memory = [];
     const colors = [];
 
-    if(products) {
+    if(products) 
+    {
         products.map((product) => {
             if(!brand.includes(product.brand)) {
                 brand.push(product.brand);
@@ -60,20 +60,22 @@ function Tool({ loading, handleChangeSearch,
     <div className='w-full h-full bg-white rounded-sm p-5 lg:block md:hidden hidden'>
         <div className='py-3 relative'>
             <input type='text' 
-            className='w-full pr-8 pl-3 py-2 border-2 border-slate-300 rounded-md text-black outline-none search'
+             className='w-full pr-8 pl-3 py-2 border-2 border-slate-300 rounded-md text-black outline-none search'
              onKeyDown={handleKeyDown}
              value={searchName} placeholder='Nhập từ khóa cần tìm...'
              onChange={onChangeSearchName} 
              />
             <span className='absolute inset-y-6 right-2 pl-2 flex items-end'>
                 <button disabled={loading} onClick={() => handleChangeSearch(searchName)}>
-                {loading ? 
-                <div className='flex items-center'>
-                    <CircularProgress size={25}  />
-                </div> : 
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="h-6 w-6 text-slate-500">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-                </svg> }
+                    {
+                        loading ? 
+                        <div className='flex items-center'>
+                            <CircularProgress size={25}  />
+                        </div> : 
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="h-6 w-6 text-slate-500">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                        </svg> 
+                    }
                 </button>
             </span>
         </div>
