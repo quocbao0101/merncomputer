@@ -1,6 +1,7 @@
 import React from 'react'
 import Slider from '../../components/Slider'
 import { saleSlider } from './slider'
+import { Link } from 'react-router-dom';
 
 function Sale() {
   return (
@@ -11,14 +12,14 @@ function Sale() {
                 lg:uppercase md:normal-case normal-case mb-3'>Sản phẩm giá tốt - chốt liền tay</span>
                 <div className='flex lg:flex-row md:flex-row flex-col items-center'>
                     <span className='lg:text-xl md:text-sm text-xs font-semibold text-gray-500'>Đừng vội mua nếu chưa xem giá tại</span>
-                    <a href='/'>
+                    <Link to href='/'>
                         <span className='lg:ml-1 md:ml-1 
                         lg:p-2 md:p-2 p-1
                         lg:text-xl md:text-sm text-xs
                         bg-gradient-to-r from-red-500 to-orange-400 font-semibold text-white rounded-lg'>
                             Nguyễn Vũ Store
                         </span>
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>

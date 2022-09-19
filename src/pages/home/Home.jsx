@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './style.css';
 import { ads, data, keyboard } from './data';
 import { bannerData1, bannerData2, fadeImages, saleData } from './slider';
@@ -9,11 +9,25 @@ import Sale from './Sale';
 import SlideProduct from '../../components/SlideProduct';
 import Card from '../../components/Card';
 import { card } from './card';
+import { Link } from 'react-router-dom';
 import SliderFade from '../../components/SliderFade';
+import { useSelector, useDispatch } from 'react-redux';
+import PacmanLoader from "react-spinners/PacmanLoader";
+import getMenu from '../../modules/menu/action';
 
 function Home() {
+  
   const product = products.sort((a, b) => a.price - b.price);
   const pros = product.slice(0,8);
+  const menu = useSelector((state) => state.menu.menu)
+  const loading = useSelector((state) => state.menu.loading)
+  const [open, setOpen] = useState(true);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getMenu())
+  }, [])
+
   return (
     <div>
         {/* Mobile */}
@@ -25,7 +39,7 @@ function Home() {
                 <Products category='Khuyến mãi hot' data={pros} />
                 <Slider data={saleData} />
                 <SlideProduct space={4} slides={2} category='Màn hình giá shock' data={products} />
-                <div className='grid grid-cols-2 h-full'>
+                <div className='grid grid-cols-1 h-full'>
                       <div className='h-full'> 
                           <Slider data={bannerData1} />
                       </div>
@@ -54,33 +68,45 @@ function Home() {
         </div>
         {/* Desktop */}
         <div className='background pb-10 lg:block md:hidden hidden'>
-            <div className='container mx-auto'>
+          {!loading ?
+            (<div className='container mx-auto'>
               <div className='container'>
                 <div className='grid grid-cols-4 gap-2 py-5'>
-                  <div className='flex bg-sky-200 cards rounded-md text-xs font-medium'>
-                    <ul className='w-full'>
-                      {data.map((cate, index) => 
+                  <div className='flex cards rounded-md text-xs font-medium'>
+                    <ul className='w-full bg-white'>
+                      {menu.map((cate, index) => 
                       (<li key={[index]} className='p-3 w-full 
                       hover:bg-gradient-to-r from-red-500 to-orange-400 
-                      hover:text-white font-bold text-sm text-black duration-300
+                      hover:text-white font-bold text-xs text-black duration-300
                       '> 
-                        <a href='/'>{cate.name}</a>
+                        <Link to={cate.link}>{cate.name}</Link>
                       </li>))}
                     </ul>
                   </div>
-                  <div className='flex col-span-2'>
-                    <div className='w-full h-full'>
-                        <Slider data={fadeImages} />
+                  {open ? 
+                  <>
+                    <div className='flex col-span-2'>
+                      <div className='w-full h-full'>
+                          <Slider data={fadeImages} />
+                      </div>
                     </div>
-                  </div>
-                  <div className='flex flex-col'>
-                    {ads.map((adver, index) => (
-                        <img className='py-1 h-1/2 w-full 
-                        transition ease-in-out delay-150
-                        duration-300 image' key={[index]} src={adver.image} alt='12345'>
-                        </img>
-                    ))}
-                  </div>
+                    <div className='flex flex-col'>
+                      {ads.map((adver, index) => (
+                          <img className='py-1 h-1/2 w-full 
+                          transition ease-in-out delay-150
+                          duration-300 image' key={[index]} src={adver.image} alt='12345'>
+                          </img>
+                      ))}
+                    </div>
+                  </> : 
+                  <div className='p-5 grid grid-cols-4 col-span-3 w-full h-full'>
+                    <div>
+                      <div>hello</div>
+                    </div>
+                    <div>
+                      hello
+                    </div>
+                  </div>}
                 </div>
                 <div className='grid grid-cols-4 gap-2'>
                       {keyboard.map((key, index) => (
@@ -120,7 +146,13 @@ function Home() {
                   ))}
                 </div>
               </div>
+            </div>) : 
+            <div className='flex justify-center items-center h-screen'>
+              <div className=''>
+                <PacmanLoader color="#36d7b7"  />
+              </div>
             </div>
+          }
         </div>
     </div>
   )

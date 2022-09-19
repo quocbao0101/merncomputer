@@ -15,7 +15,7 @@ a:where(:hover, :focus-visible) {
   line-height: 1;
 } */
 .textBox {
-  width: 60%;
+  width: 80%;
 }
 
 .footer {
