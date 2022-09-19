@@ -2,8 +2,22 @@ import React, { useState } from 'react';
 import './style.css';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/png/logo-ngang.svg';
+import { USER_LOCAL_STORE } from '../../constants';
+import { withStyles } from '@mui/styles';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import ListItemText from '@mui/material/ListItemText';
 
 function Header() {
+  const user = JSON.parse(localStorage.getItem(USER_LOCAL_STORE));
+  const [anchorEl, setAnchorEl] = useState(null);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   return (
     <div>
       {/* Mobile */}
@@ -122,7 +136,11 @@ function Header() {
                 <input className='bg-gray-200 ml-5 py-5 px-4 h-9 textBox rounded-3xl text-sm' placeholder='Nhập tên sảm phẩm cần tìm' type='text' />
               </div>
               <div className='px-10 py-5 rounded-lg lg:block md:block hidden'>
-                <Link to='/login' className='transition ease-in-out delay-100 text-sm hover:text-red-600 font-bold'>ĐĂNG NHẬP / ĐĂNG KÝ</Link>
+                {user ?
+                  <span className='font-bold' onClick={handleClick}>{user.name}</span>
+                  :
+                  <Link to='/dang-nhap' className='transition ease-in-out delay-100 text-sm hover:text-red-600 font-bold'>ĐĂNG NHẬP / ĐĂNG KÝ</Link>
+                }
               </div>
           </div>
           <div className='flex flex-row mt-4 justify-between px-10 py-5 rounded-lg'>

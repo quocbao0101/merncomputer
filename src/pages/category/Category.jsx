@@ -1,35 +1,76 @@
 import React, { useEffect, useState } from 'react'
 import CurrencyFormat from 'react-currency-format';
-import { Link } from 'react-router-dom';
 import './style.css';
 import Pagination from '@mui/material/Pagination';
-import { useQuery } from 'react-query';
 import Tool from './Tool';
 import PriceDrawer from './PriceDrawer';
-import axios from 'axios';
 import useInput from '../../hooks/input.hooks';
+import { useSelector, useDispatch } from 'react-redux';
+import PacmanLoader from "react-spinners/PacmanLoader";
 import Backdrop from '@mui/material/Backdrop';
+import getProductPagination, { getProducts } from '../../modules/products/action';
 
 
 
 function Category() {
-  const [page, setPage] = useState(0);
-  const { value: pageSize, onChange: onChangePageSize } = useInput(1);
+  const dispatch = useDispatch();
 
+  const productPrice = useSelector((state) => state.products.data);
+  const maxPrice = Math.max.apply(Math, productPrice.map(function(product) { return product.price; }))
+  const minPrice = Math.min.apply(Math, productPrice.map(function(product) { return product.price; }))
+  const data = useSelector((state) => state.products.product);
+  const isFetching = useSelector((state) => state.products.loading);
+  const [page, setPage] = useState(0);
+  const { value: pageSize, onChange: onChangePageSize } = useInput(12);
   const [totalData, setTotalData] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const [totalElements, setTotalElements] = useState(0);
+  const [sort, setSort] = useState('asc');
+  const [news, setNews] = useState('');
+  const [product, setProduct] = useState([]);
+  const [open, setOpen] = React.useState(false);
+  const [search, setSearch] = useState('');
+  const [inPrice, setInPrice] = useState([]);
 
 
   const pagination = {
     page: page === 0 ? page : page - 1,
     pageSize,
+    filter: {
+      name: search,
+    },
+    sort: {
+      price: sort,
+      new: news,
+      inPrice: inPrice,
+    }
+  };
+  useEffect(() => {
+    dispatch(getProducts());
+  }, []);
+  useEffect(() => {
+    if(inPrice) {
+      dispatch(getProductPagination(pagination));
+    }
+  }, []);
+  useEffect(() => {
+    setInPrice([minPrice, maxPrice]);
+  }, [productPrice]);
+  useEffect(() => {
+    if(data) {
+      setProduct(data.data);
+      setTotalPages(data.totalPages);
+      setTotalElements(data.totalElements);
+      setTotalData(data.totalData);
+    }
+  }, [data])
+  useEffect(() => {
+    dispatch(getProductPagination(pagination));
+  }, [sort, news, search, inPrice])
+
+  const handleChangeSearch = (value) => {
+    setSearch(value);
   }
-  const fetchProduct = async (pagination) => {
-    return await axios.post('http://localhost:5000/api/products/pagination', pagination)
-  }
-  const { data, isLoading, isFetching, isError ,error } = useQuery(['products', page],() => fetchProduct(pagination))
-  const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
   }
@@ -42,16 +83,18 @@ function Category() {
   const handleCloseDrop = () => {
     setOpen(false);
   };
-  const [product, setProduct] = useState([]);
-  useEffect(() => {
-    if(data) {
-      setProduct(data.data.data);
-      setTotalPages(data.data.totalPages);
-      setTotalElements(data.data.totalElements);
-      setTotalData(data.data.totalData);
+  const handleOnChangeSelect = (e) => {
+    const value = e.target.value;
+    if(value === 'asc' || value === 'desc')
+    {
+      setSort(value);
+    } else {
+      setNews(value)
     }
-  }, [data])
-  console.log(isFetching);
+  };
+  const handleChangeInPrice = (value) => {
+    setInPrice(value)
+  }
   return (
     <div className='background'>
       <div className='container mx-auto py-10'>
@@ -64,12 +107,10 @@ function Category() {
           </div>
           <div className='lg:block md:hidden hidden'>
             <span className='text-lg font-medium'>Hiển thị {totalElements} của {totalData} kết quả</span>
-            <select className='sort outline-none ml-5 py-3 px-2 rounded border-2 text-base text-black'>
-              <option>Thứ tự theo mức độ phổ biến</option>
-              <option>Thứ tự theo điểm đánh giá</option>
-              <option>Mới nhất</option>
-              <option>Thứ tự theo giá: thấp đến cao</option>
-              <option>Thứ tự theo giá: cao xuống thấp</option>
+            <select value={sort} onChange={handleOnChangeSelect} className='sort outline-none ml-5 py-3 px-2 rounded border-2 text-base text-black'>
+              <option value='date'>Mới nhất</option>
+              <option value='asc'>Thứ tự theo giá: thấp đến cao</option>
+              <option value='desc'>Thứ tự theo giá: cao xuống thấp</option>
             </select>
           </div>
         </div>
@@ -81,7 +122,7 @@ function Category() {
         <div className='grid lg:grid-cols-4 md:grid-cols-1 grid-cols-1 gap-4 mt-7'>
           <div className='col-span-3'>
             <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-2 lg:gap-4 md:gap-4 gap-0.5'>
-            {product.map((product, index) => {
+              {(product && (product.length > 0)) ? product.map((product, index) => {
               const salePrice = product.price - (product.price * product.discount / 100);
               return (
                 <div key={[index]} className='bg-white lg:rounded-lg md:rounded-lg rounded-none card
@@ -143,7 +184,7 @@ function Category() {
                         </div>
                   </div>
                 </div>
-            )})}
+            )}) : <span>Không tìm thấy bất cứ sản phẩm nào...</span>}
             </div>
             <div className='flex justify-center mt-5'>
               <Pagination 
@@ -151,11 +192,14 @@ function Category() {
                 count={totalPages}
                 page={page}
                 onChange={handleChangePage}
-                color="secondary"
               />
             </div>
           </div>
-          <Tool loading={isFetching} />
+          <Tool loading={isFetching} 
+              handleChangeInPrice={handleChangeInPrice}
+              handleChangeSearch={handleChangeSearch}
+              products={product}
+          />
           <Backdrop
             sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
             open={isFetching}

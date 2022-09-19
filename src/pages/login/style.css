@@ -1,0 +1,22 @@
+.button {
+    background-color: #fdba74;
+    padding-inline: 5%;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: ease-in-out;
+    transition-duration: 300ms;
+    width: 150px;
+    height: 48px;
+}
+
+.button:hover {
+    background-color: #fb923c;
+    transition: ease-in-out;
+    transition-duration: 200ms;
+}
+.disabled {
+    padding-inline: 5%;
+    background-color: #fed7aa;
+    width: 150px;
+    height: 48px;
+}

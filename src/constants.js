@@ -1,0 +1,12 @@
+export const OK = 200;
+export const CREATED = 201;
+export const BAD_REQUEST = 400;
+export const UNAUTHORIZED = 401;
+export const FORBIDDEN = 403;
+export const NOT_FOUND = 404;
+export const INTERNAL_SERVER_ERROR = 500;
+export const USER_LOCAL_STORE = 'currentUserAPI';
+export const USER_REMEMBER_LOCAL_STORE = 'userRememberMeAPI';
+export const SUPER_ADMIN_ROLE = 'ROLE_SUPER_ADMIN';
+export const CREATED_STRING = 'CREATED';
+export const OK_STRING = 'OK';

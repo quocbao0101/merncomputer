@@ -6,16 +6,21 @@ import Footer from "./pages/header/Footer";
 import { Routes, Route } from 'react-router-dom';
 import Category from "./pages/category/Category";
 import MuiSpeedDial from "./components/MuiSpeedDial";
+import Login from "./pages/login/Login";
+import Register from "./pages/register/Register";
+
 
 
 function App() {
   return (
   <>
-    <div className="flex flex-col">
+    <div className="flex flex-col h-screen justify-between">
       <Header />
       <Routes>
         <Route path="/" index element={<Home />}></Route>
-        <Route path="/product" element={<Category />}></Route>
+        <Route path="/danh-muc/linh-kien" element={<Category />}></Route>
+        <Route path="/dang-nhap" element={<Login />}></Route>
+        <Route path="/dang-ky" element={<Register />}></Route>
       </Routes>
       <Footer />
       <ScrollToTop 
@@ -27,7 +32,6 @@ function App() {
           </svg>
         </div>}
         smooth />
-
     </div>
     <MuiSpeedDial />
   </>
