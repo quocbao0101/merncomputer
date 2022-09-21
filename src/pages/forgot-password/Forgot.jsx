@@ -7,7 +7,8 @@ function Forgot() {
   const [text, setText] = React.useState('');
   const users = useSelector((state) => state.user.user);
   const loading = useSelector((state) => state.user.loading);
-  const [user, setUser] = React.useState('')
+  const [message, setMessage] = React.useState('');
+  const [user, setUser] = React.useState([])
   const dispatch = useDispatch();
 
 
@@ -28,7 +29,13 @@ function Forgot() {
     }
   }, [users]);
 
-  console.log(user);
+  useEffect(() => {
+    if(user.length > 0) {
+        setMessage('')
+    } else {
+        setMessage('Tài khoản hoặc email không tồn tại !')
+    }
+  }, [user])
   return (
     <div className=''>
         <div className='flex justify-center'>
@@ -70,6 +77,9 @@ function Forgot() {
                         : 'Đặt lại mật khẩu'
                     }
                 </button>
+            </div>
+            <div className='mt-10'>
+                    <span>{message}</span>
             </div>
         </div>
     </div>
